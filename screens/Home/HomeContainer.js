@@ -9,15 +9,18 @@ const HomeContainer = ({ posts, setPosts, changeLikeStatus }) => {
   const onInputChange = (text) => {
     setInputText(text);
   };
+
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos?albumId=1")
-      .then((response) => {
-        let newData = response.data.map((post) => {
-          return { ...post, likeStatus: false };
+    if (posts.length == 0) {
+      axios
+        .get("https://jsonplaceholder.typicode.com/photos?albumId=1")
+        .then((response) => {
+          let newData = response.data.map((post) => {
+            return { ...post, likeStatus: false };
+          });
+          setPosts(newData);
         });
-        setPosts(newData);
-      });
+    }
   }, [inputText]);
 
   const filteredPosts = posts.filter((post) => {
@@ -33,7 +36,7 @@ const HomeContainer = ({ posts, setPosts, changeLikeStatus }) => {
   );
 };
 
-let mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   posts: state.main.posts,
 });
 

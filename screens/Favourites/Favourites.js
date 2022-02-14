@@ -1,10 +1,13 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
+import GalleryList from "../../components/GalleryList/GalleryList";
 
-export default function Favourites() {
+const Favourites = ({ posts }) => {
   return (
     <View>
-      <Text>Favourites</Text>
+      <GalleryList posts={posts} />
     </View>
   );
-}
+};
+
+export default Favourites;

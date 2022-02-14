@@ -3,11 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeContainer from "../../screens/Home/HomeContainer";
-import Favourites from "../../screens/Favourites/Favourites";
+import FavouritesContainer from "../../screens/Favourites/FavouritesContainer";
 
 const Tab = createBottomTabNavigator();
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -28,7 +28,7 @@ const Navbar = (props) => {
         })}
       >
         <Tab.Screen name="Photo" component={HomeContainer} />
-        <Tab.Screen name="Favourites" component={Favourites} />
+        <Tab.Screen name="Favourites" component={FavouritesContainer} />
       </Tab.Navigator>
     </NavigationContainer>
   );
